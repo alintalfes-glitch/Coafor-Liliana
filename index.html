@@ -421,4 +421,416 @@
         .program-table th,
         .program-table td {
             padding: 12px 20px;
-            text-align: left
+            text-align: left;
+        }
+
+        .program-table tr.today {
+            background: #fdf0f0;
+            font-weight: 600;
+            color: var(--rose-dark);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #fdf0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--rose);
+            font-size: 1.2rem;
+        }
+
+        .contact-item a:hover {
+            color: var(--rose);
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--gold);
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                gap: 15px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <a href="#acasa" class="logo">Coafor <span>Liliana</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#acasa">Acasă</a></li>
+                <li><a href="#despre">Despre</a></li>
+                <li><a href="#servicii">Servicii</a></li>
+                <li><a href="#recenzii">Recenzii</a></li>
+                <li><a href="#program">Program</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="acasa">
+        <div class="hero-content">
+            <h1>Coafor Liliana</h1>
+            <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span>5.0 · 6 recenzii Google</span>
+                <span id="open-status" class="status-badge"></span>
+            </div>
+            <p>Salon de coafură în Hunedoara, cu servicii profesionale și rezultate impecabile.</p>
+            <div class="hero-buttons" style="margin-top: 30px;">
+                <a href="tel:+40766779336" class="btn btn-primary">📞 Sună acum</a>
+                <a href="https://www.facebook.com/share/1Bedmbskez/?mibextid=wwXIfr" target="_blank" class="btn btn-outline">Facebook</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESPRE -->
+    <section id="despre">
+        <div class="container">
+            <h2 class="section-title">Despre noi</h2>
+            <p class="section-subtitle">Profesionalism, seriozitate și pasiune pentru frumusețe.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Coafor Liliana este un salon de încredere din Hunedoara, recunoscut pentru seriozitate, profesionalism și coafuri impecabile. Clienții noștri se bucură de servicii personalizate, de la tunsori și vopsit până la coafuri de ocazie, coafuri de mireasă și tratamente de îngrijire.</p>
+                    <p>Folosim produse profesionale de calitate, precum <strong>BESS, KARAL, LONDA, LAKME și ETB</strong>, pentru a obține rezultate durabile și strălucitoare.</p>
+                    <div class="about-badges">
+                        <div class="badge"><span class="stars">★★★★★</span> 5.0 pe Google</div>
+                        <div class="badge">📍 Hunedoara</div>
+                        <div class="badge">✂️ Servicii complete</div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    💇‍♀️
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICII -->
+    <section id="servicii">
+        <div class="container">
+            <h2 class="section-title">Servicii & Prețuri</h2>
+            <p class="section-subtitle">Prețurile pot varia în funcție de lungimea și densitatea părului. Pentru o evaluare exactă, sună-ne.</p>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="toate">Toate</button>
+                <button class="filter-btn" data-category="tunsori">Tunsori</button>
+                <button class="filter-btn" data-category="aranjat">Aranjat</button>
+                <button class="filter-btn" data-category="vopsit">Vopsit</button>
+                <button class="filter-btn" data-category="permanent">Permanent</button>
+                <button class="filter-btn" data-category="coafat">Coafat</button>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="services-table">
+                    <thead>
+                        <tr>
+                            <th>Nr.</th>
+                            <th>Serviciu</th>
+                            <th>Preț</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-category="tunsori"><td>1</td><td>Tuns par scurt</td><td>70 LEI</td></tr>
+                        <tr data-category="aranjat"><td>2</td><td>Spălat și aranjat par scurt</td><td>90 LEI</td></tr>
+                        <tr data-category="tunsori"><td>3</td><td>Tuns par mediu</td><td>80 LEI</td></tr>
+                        <tr data-category="aranjat"><td>4</td><td>Spălat și aranjat par mediu</td><td>100 LEI</td></tr>
+                        <tr data-category="tunsori"><td>5</td><td>Tuns par lung</td><td>90 LEI</td></tr>
+                        <tr data-category="aranjat"><td>6</td><td>Spălat și aranjat par lung</td><td>100 LEI</td></tr>
+                        <tr data-category="vopsit"><td>7</td><td>Manoperă vopsit par scurt</td><td>30 LEI</td></tr>
+                        <tr data-category="vopsit"><td>8</td><td>Manoperă vopsit par mediu</td><td>40 LEI</td></tr>
+                        <tr data-category="vopsit"><td>9</td><td>Manoperă vopsit par lung</td><td>40 LEI</td></tr>
+                        <tr data-category="vopsit"><td>10</td><td>Manoperă suvițat par scurt</td><td>30 LEI</td></tr>
+                        <tr data-category="vopsit"><td>11</td><td>Manoperă suvițat par mediu</td><td>40 LEI</td></tr>
+                        <tr data-category="vopsit"><td>12</td><td>Manoperă suvițat par lung</td><td>40 LEI</td></tr>
+                        <tr data-category="permanent"><td>13</td><td>Permanent par scurt (tuns, spălat, șampon, balsam, spumă, fixative, aranjat)</td><td>210 LEI</td></tr>
+                        <tr data-category="permanent"><td>14</td><td>Permanent par mediu (tuns, spălat, șampon, balsam, spumă, fixative, aranjat)</td><td>240 LEI</td></tr>
+                        <tr data-category="permanent"><td>15</td><td>Permanent par lung (tuns, spălat, șampon, balsam, spumă, fixative, aranjat)</td><td>260 LEI</td></tr>
+                        <tr data-category="coafat"><td>16</td><td>Coafat par scurt ocazie</td><td>100 LEI</td></tr>
+                        <tr data-category="coafat"><td>17</td><td>Coafat par mediu ocazie</td><td>180 LEI</td></tr>
+                        <tr data-category="coafat"><td>18</td><td>Coafat par lung ocazie</td><td>220 LEI</td></tr>
+                        <tr data-category="coafat"><td>19</td><td>Cocuri</td><td>250 LEI</td></tr>
+                        <tr data-category="coafat"><td>20</td><td>Coafat mireasă</td><td>300 LEI</td></tr>
+                        <tr data-category="coafat"><td>21</td><td>Coafat nașă</td><td>250 LEI</td></tr>
+                        <tr data-category="vopsit"><td>22</td><td>Praf șuvițe (1 cupă + oxidat)</td><td>40 LEI</td></tr>
+                        <tr data-category="vopsit"><td>23</td><td>Vopsea BESS (100 ml + oxidat)</td><td>70 LEI</td></tr>
+                        <tr data-category="vopsit"><td>24</td><td>Vopsea KARAL (100 ml + oxidat)</td><td>60 LEI</td></tr>
+                        <tr data-category="vopsit"><td>25</td><td>Praf roșu șuvițe (1 cupă + oxidat)</td><td>30 LEI</td></tr>
+                        <tr data-category="coafat"><td>26</td><td>Întins placă și aranjat</td><td>100 LEI</td></tr>
+                        <tr data-category="vopsit"><td>27</td><td>Vopsea Londa (60 ml + oxidat)</td><td>70 LEI</td></tr>
+                        <tr data-category="vopsit"><td>28</td><td>Produse Lakme</td><td>90 LEI</td></tr>
+                        <tr data-category="vopsit"><td>29</td><td>Vopsea ETB</td><td>70 LEI</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECENZII -->
+    <section id="recenzii">
+        <div class="container">
+            <h2 class="section-title">Ce spun clienții</h2>
+            <p class="section-subtitle">Recenzii reale de pe Google.</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Cele mai frumoase coafuri de care am beneficiat în aproape 20 de ani de când am ajuns la acest salon. Mulțumesc, Lili!"</p>
+                    <div class="review-author">Angela Marinescu <span>· Google</span></div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Seriozitate și profesionalism."</p>
+                    <div class="review-author">Aneta Crișan <span>· Google</span></div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>Recenzie de 5 stele pe Google.</p>
+                    <div class="review-author">Daniela Bala <span>· Google</span></div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>Recenzie de 5 stele pe Google.</p>
+                    <div class="review-author">Monica Bircean <span>· Google</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAM -->
+    <section id="program">
+        <div class="container">
+            <h2 class="section-title">Program de funcționare</h2>
+            <p class="section-subtitle">Te așteptăm cu drag!</p>
+            <div class="program-table">
+                <table>
+                    <tbody>
+                        <tr id="day-0"><td>Duminică</td><td>Închis</td></tr>
+                        <tr id="day-1"><td>Luni</td><td>Închis</td></tr>
+                        <tr id="day-2"><td>Marți</td><td>14:00 - 22:00</td></tr>
+                        <tr id="day-3"><td>Miercuri</td><td>08:00 - 16:00</td></tr>
+                        <tr id="day-4"><td>Joi</td><td>14:00 - 22:00</td></tr>
+                        <tr id="day-5"><td>Vineri</td><td>08:00 - 16:00</td></tr>
+                        <tr id="day-6"><td>Sâmbătă</td><td>08:00 - 16:00</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">Programează-te telefonic sau pe Facebook.</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Date de contact</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <span>Strada Căprioarei, Hunedoara</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <a href="tel:+40766779336">0766 779 336</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📘</div>
+                        <a href="https://www.facebook.com/share/1Bedmbskez/?mibextid=wwXIfr" target="_blank">Facebook Coafor Liliana</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <span>Program flexibil – vezi secțiunea Program</span>
+                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Strada+C%C4%83prioarei%2C+Hunedoara" target="_blank" class="btn btn-outline" style="margin-top: 20px;">Obține direcții</a>
+                </div>
+                <div class="map">
+                    <iframe src="https://maps.google.com/maps?q=Strada%20C%C4%83prioarei%2C%20Hunedoara&output=embed" loading="lazy" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Coafor Liliana · Hunedoara · Toate drepturile rezervate.</p>
+        <p style="margin-top: 5px;"><a href="tel:+40766779336">0766 779 336</a> | <a href="https://www.facebook.com/share/1Bedmbskez/?mibextid=wwXIfr" target="_blank">Facebook</a></p>
+    </footer>
+
+    <script>
+        // Meniu mobil
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Închide meniul la click pe link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Filtrare servicii
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const serviceRows = document.querySelectorAll('#services-table tbody tr');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const category = btn.dataset.category;
+                serviceRows.forEach(row => {
+                    if (category === 'toate' || row.dataset.category === category) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Status deschis/închis
+        const schedule = {
+            0: null, // Duminică
+            1: null, // Luni
+            2: { start: '14:00', end: '22:00' }, // Marți
+            3: { start: '08:00', end: '16:00' }, // Miercuri
+            4: { start: '14:00', end: '22:00' }, // Joi
+            5: { start: '08:00', end: '16:00' }, // Vineri
+            6: { start: '08:00', end: '16:00' }  // Sâmbătă
+        };
+
+        function updateOpenStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const minutes = now.getHours() * 60 + now.getMinutes();
+            const todaySchedule = schedule[day];
+            let isOpen = false;
+
+            if (todaySchedule) {
+                const [startH, startM] = todaySchedule.start.split(':').map(Number);
+                const [endH, endM] = todaySchedule.end.split(':').map(Number);
+                const startMinutes = startH * 60 + startM;
+                const endMinutes = endH * 60 + endM;
+                isOpen = minutes >= startMinutes && minutes < endMinutes;
+            }
+
+            const badge = document.getElementById('open-status');
+            badge.textContent = isOpen ? 'Deschis acum' : 'Închis acum';
+            badge.classList.toggle('open', isOpen);
+            badge.classList.toggle('closed', !isOpen);
+        }
+
+        updateOpenStatus();
+        setInterval(updateOpenStatus, 60000);
+
+        // Evidențiază ziua curentă în tabelul de program
+        const todayIndex = new Date().getDay();
+        const todayRow = document.getElementById(`day-${todayIndex}`);
+        if (todayRow) {
+            todayRow.classList.add('today');
+        }
+
+        // Anul curent în footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
