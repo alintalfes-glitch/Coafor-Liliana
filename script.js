@@ -16,26 +16,121 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 // ===== FILTRARE SERVICII =====
-const filterButtons = document.querySelectorAll('.filter-btn');
+const serviceFilterButtons = document.querySelectorAll('#service-filters .filter-btn');
 const serviceRows = document.querySelectorAll('#services-table tbody tr');
 
-filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Scoate clasa activă de la toate butoanele
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const category = btn.dataset.category;
-
-        // Afișează/ascunde rândurile
-        serviceRows.forEach(row => {
-            if (category === 'toate' || row.dataset.category === category) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
+function filterItems(buttons, items, category) {
+    items.forEach(item => {
+        if (category === 'toate' || item.dataset.category === category) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
     });
+}
+
+serviceFilterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        serviceFilterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterItems(serviceFilterButtons, serviceRows, btn.dataset.category);
+    });
+});
+
+// ===== FILTRARE GALERIE =====
+const galleryFilterButtons = document.querySelectorAll('#gallery-filters .filter-btn');
+const galleryItems = document.querySelectorAll('#gallery-grid .gallery-item');
+
+galleryFilterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        galleryFilterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterItems(galleryFilterButtons, galleryItems, btn.dataset.category);
+    });
+});
+
+// ===== LIGHTBOX =====
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCaption = document.getElementById('lightbox-caption');
+const lightboxClose = document.querySelector('.lightbox-close');
+
+function openLightbox(imageSrc, caption) {
+    lightboxImg.src = imageSrc;
+    lightboxCaption.textContent = caption || '';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // blochează scroll-ul
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const fullImage = item.dataset.full;
+        const imgAlt = item.querySelector('img') ? item.querySelector('img').alt : '';
+        openLightbox(fullImage, imgAlt);
+    });
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+
+// Închide lightbox la click în afara imaginii
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        closeLightbox();
+    }
+});
+
+// Navigare cu tastele săgeți
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+
+    const visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none');
+    const currentSrc = lightboxImg.src;
+    const currentIndex = visibleItems.findIndex(item => item.dataset.full === currentSrc);
+
+    if (e.key === 'Escape') {
+        closeLightbox();
+    } else if (e.key === 'ArrowRight' && currentIndex < visibleItems.length - 1) {
+        const nextItem = visibleItems[currentIndex + 1];
+        openLightbox(nextItem.dataset.full, nextItem.querySelector('img').alt);
+    } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+        const prevItem = visibleItems[currentIndex - 1];
+        openLightbox(prevItem.dataset.full, prevItem.querySelector('img').alt);
+    }
+});
+
+// ===== FORMULAR DE PROGRAMARE =====
+const bookingForm = document.getElementById('booking-form');
+const formStatus = document.getElementById('form-status');
+
+bookingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Aici poți adăuga cod pentru trimiterea efectivă (ex: fetch către un server)
+    // Pentru moment, simulăm o trimitere reușită
+
+    const nume = document.getElementById('nume').value.trim();
+    const telefon = document.getElementById('telefon').value.trim();
+
+    if (!nume || !telefon) {
+        formStatus.textContent = 'Te rugăm să completezi câmpurile obligatorii.';
+        formStatus.className = 'form-status error';
+        return;
+    }
+
+    // Simulează succes
+    formStatus.textContent = 'Cererea a fost trimisă cu succes! Te vom contacta în curând.';
+    formStatus.className = 'form-status success';
+    bookingForm.reset();
+
+    // Ascunde mesajul după 5 secunde
+    setTimeout(() => {
+        formStatus.style.display = 'none';
+    }, 5000);
 });
 
 // ===== STATUS DESCHIS/ÎNCHIS =====
@@ -70,7 +165,6 @@ function updateOpenStatus() {
     badge.classList.toggle('closed', !isOpen);
 }
 
-// Actualizează statusul imediat și apoi la fiecare minut
 updateOpenStatus();
 setInterval(updateOpenStatus, 60000);
 
@@ -83,3 +177,21 @@ if (todayRow) {
 
 // ===== ANUL CURENT ÎN FOOTER =====
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// ===== BUTON BACK TO TOP =====
+const backToTopBtn = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+});
+
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
