@@ -1,4 +1,3 @@
-/* ===== VARIABILE GLOBALE ===== */
 :root {
     --cream: #fdf8f4;
     --dark: #3e2b2b;
@@ -143,14 +142,13 @@ header {
     overflow: hidden;
 }
 
-/* Overlay opțional pentru imagine de fundal */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2); /* ajustează opacitatea după preferință */
+    background: rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -463,7 +461,7 @@ td:last-child {
     font-size: 0.9rem;
 }
 
-/* ===== ECHIPA ===== */
+/* ===== ECHIPA / COAFEZĂ ===== */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -473,6 +471,7 @@ td:last-child {
 
 .team-member {
     text-align: center;
+    max-width: 300px;
 }
 
 .team-member img {
@@ -696,14 +695,14 @@ footer {
 
 .floating-btn.facebook {
     right: 20px;
-    bottom: 80px; /* deasupra celui de telefon */
+    bottom: 80px;
     background: #4267B2;
 }
 
 .floating-btn.phone {
     right: 20px;
     bottom: 20px;
-    background: #25D366; /* verde WhatsApp-like */
+    background: #25D366;
 }
 
 /* ===== BUTON BACK TO TOP ===== */
@@ -722,7 +721,7 @@ footer {
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all var(--transition);
-    display: none; /* ascuns inițial, afișat prin JS */
+    display: none;
 }
 
 .back-to-top:hover {
