@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coafor Liliana | Hair Salon Hunedoara</title>
+    <title>Coafor Liliana | Salon de coafură în Hunedoara</title>
     <meta name="description" content="Coafor Liliana - salon de coafură în Hunedoara. Tunsori, vopsit, coafat, permanent. Evaluat 5.0 pe Google. Telefon: 0766 779 336.">
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Favicon (optional) -->
+    <link rel="icon" href="imagini/favicon.png" type="image/png">
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+
+    <!-- ===== HEADER ===== -->
+    <header id="header">
         <nav class="nav-container">
             <a href="#acasa" class="logo">Coafor <span>Liliana</span></a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#acasa">Acasă</a></li>
                 <li><a href="#despre">Despre</a></li>
                 <li><a href="#servicii">Servicii</a></li>
+                <li><a href="#galerie">Galerie</a></li>
                 <li><a href="#recenzii">Recenzii</a></li>
+                <li><a href="#echipa">Echipa</a></li>
                 <li><a href="#program">Program</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -29,8 +37,9 @@
         </nav>
     </header>
 
-    <!-- HERO -->
+    <!-- ===== HERO ===== -->
     <section class="hero" id="acasa">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Coafor Liliana</h1>
             <div class="rating">
@@ -39,15 +48,16 @@
                 <span id="open-status" class="status-badge"></span>
             </div>
             <p>Salon de coafură în Hunedoara, cu servicii profesionale și rezultate impecabile.</p>
-            <div class="hero-buttons" style="margin-top: 30px;">
+            <div class="hero-buttons">
                 <a href="tel:+40766779336" class="btn btn-primary">📞 Sună acum</a>
-                <a href="https://www.facebook.com/share/1Bedmbskez/?mibextid=wwXIfr" target="_blank" class="btn btn-outline">Facebook</a>
+                <a href="https://www.facebook.com/share/1Bedmbskez/?mibextid=wwXIfr" target="_blank" rel="noopener" class="btn btn-outline">Facebook</a>
+                <a href="#contact" class="btn btn-outline">Programează-te</a>
             </div>
         </div>
     </section>
 
-    <!-- DESPRE -->
-    <section id="despre">
+    <!-- ===== DESPRE ===== -->
+    <section id="despre" class="section-padding">
         <div class="container">
             <h2 class="section-title">Despre noi</h2>
             <p class="section-subtitle">Profesionalism, seriozitate și pasiune pentru frumusețe.</p>
@@ -61,20 +71,21 @@
                         <div class="badge">✂️ Servicii complete</div>
                     </div>
                 </div>
-                <div class="about-visual">
-                    💇‍♀️
+                <div class="about-image">
+                    <!-- Înlocuiește cu imagine reală, ex: imagini/salon-1.jpg -->
+                    <img src="imagini/salon-1.jpg" alt="Interior salon Coafor Liliana" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICII -->
-    <section id="servicii">
+    <!-- ===== SERVICII & PREȚURI ===== -->
+    <section id="servicii" class="section-padding">
         <div class="container">
             <h2 class="section-title">Servicii & Prețuri</h2>
             <p class="section-subtitle">Prețurile pot varia în funcție de lungimea și densitatea părului. Pentru o evaluare exactă, sună-ne.</p>
 
-            <div class="filter-buttons">
+            <div class="filter-buttons" id="service-filters">
                 <button class="filter-btn active" data-category="toate">Toate</button>
                 <button class="filter-btn" data-category="tunsori">Tunsori</button>
                 <button class="filter-btn" data-category="aranjat">Aranjat</button>
@@ -125,15 +136,62 @@
                     </tbody>
                 </table>
             </div>
+            <div class="text-center" style="margin-top: 20px;">
+                <a href="#" class="btn btn-outline">Descarcă lista de prețuri (PDF)</a>
+            </div>
         </div>
     </section>
 
-    <!-- RECENZII -->
-    <section id="recenzii">
+    <!-- ===== GALERIE ===== -->
+    <section id="galerie" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Galerie</h2>
+            <p class="section-subtitle">Lucrările noastre vorbesc de la sine.</p>
+
+            <div class="filter-buttons" id="gallery-filters">
+                <button class="filter-btn active" data-category="toate">Toate</button>
+                <button class="filter-btn" data-category="tunsori">Tunsori</button>
+                <button class="filter-btn" data-category="vopsit">Vopsit</button>
+                <button class="filter-btn" data-category="coafat">Coafat</button>
+                <button class="filter-btn" data-category="salon">Salon</button>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Imagini de exemplu, înlocuiește cu cele reale -->
+                <div class="gallery-item" data-category="tunsori" data-full="imagini/lucrari/tunsori-1.jpg">
+                    <img src="imagini/lucrari/tunsori-1.jpg" alt="Tunsori - exemplu 1" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="vopsit" data-full="imagini/lucrari/vopsit-1.jpg">
+                    <img src="imagini/lucrari/vopsit-1.jpg" alt="Vopsit - exemplu 1" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="coafat" data-full="imagini/lucrari/coafat-1.jpg">
+                    <img src="imagini/lucrari/coafat-1.jpg" alt="Coafat - exemplu 1" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="salon" data-full="imagini/salon/salon-1.jpg">
+                    <img src="imagini/salon/salon-1.jpg" alt="Interior salon" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="tunsori" data-full="imagini/lucrari/tunsori-2.jpg">
+                    <img src="imagini/lucrari/tunsori-2.jpg" alt="Tunsori - exemplu 2" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="vopsit" data-full="imagini/lucrari/vopsit-2.jpg">
+                    <img src="imagini/lucrari/vopsit-2.jpg" alt="Vopsit - exemplu 2" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="coafat" data-full="imagini/lucrari/coafat-2.jpg">
+                    <img src="imagini/lucrari/coafat-2.jpg" alt="Coafat - exemplu 2" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="salon" data-full="imagini/salon/salon-2.jpg">
+                    <img src="imagini/salon/salon-2.jpg" alt="Interior salon - alt unghi" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RECENZII ===== -->
+    <section id="recenzii" class="section-padding">
         <div class="container">
             <h2 class="section-title">Ce spun clienții</h2>
             <p class="section-subtitle">Recenzii reale de pe Google.</p>
-            <div class="reviews-grid">
+            <div class="reviews-grid" id="reviews-grid">
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
                     <p>"Cele mai frumoase coafuri de care am beneficiat în aproape 20 de ani de când am ajuns la acest salon. Mulțumesc, Lili!"</p>
@@ -158,8 +216,33 @@
         </div>
     </section>
 
-    <!-- PROGRAM -->
-    <section id="program">
+    <!-- ===== ECHIPA ===== -->
+    <section id="echipa" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Echipa noastră</h2>
+            <p class="section-subtitle">Profesioniști dedicați frumuseții tale.</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="imagini/echipa/liliana.jpg" alt="Liliana - fondator și stilist" loading="lazy">
+                    <h3>Liliana</h3>
+                    <p>Fondator & Stilist principal</p>
+                </div>
+                <div class="team-member">
+                    <img src="imagini/echipa/coleg-1.jpg" alt="Coafeză" loading="lazy">
+                    <h3>Nume colegă</h3>
+                    <p>Coafeză</p>
+                </div>
+                <div class="team-member">
+                    <img src="imagini/echipa/coleg-2.jpg" alt="Coafeză" loading="lazy">
+                    <h3>Nume colegă</h3>
+                    <p>Specialist vopsit</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROGRAM ===== -->
+    <section id="program" class="section-padding">
         <div class="container">
             <h2 class="section-title">Program de funcționare</h2>
             <p class="section-subtitle">Te așteptăm cu drag!</p>
@@ -179,11 +262,11 @@
         </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section-padding">
         <div class="container">
             <h2 class="section-title">Contact</h2>
-            <p class="section-subtitle">Programează-te telefonic sau pe Facebook.</p>
+            <p class="section-subtitle">Programează-te telefonic, pe Facebook sau folosește formularul de mai jos.</p>
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3>Date de contact</h3>
@@ -197,13 +280,44 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">📘</div>
-                        <a href="https://www.facebook.com/share/1Bedmbskez/?mibextid=wwXIfr" target="_blank">Facebook Coafor Liliana</a>
+                        <a href="https://www.facebook.com/share/1Bedmbskez/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook Coafor Liliana</a>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">🕒</div>
                         <span>Program flexibil – vezi secțiunea Program</span>
                     </div>
-                    <a href="https://maps.app.goo.gl/kxdrieyEEgVnBgYu8?g_st=ic" target="_blank" class="btn btn-outline" style="margin-top: 20px;">Obține direcții</a>
+                    <a href="https://maps.app.goo.gl/kxdrieyEEgVnBgYu8?g_st=ic" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top: 20px;">Obține direcții</a>
+                </div>
+                <div class="contact-form-wrapper">
+                    <h3>Formular de programare</h3>
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <label for="nume">Nume complet *</label>
+                            <input type="text" id="nume" name="nume" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefon">Telefon *</label>
+                            <input type="tel" id="telefon" name="telefon" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="serviciu">Serviciu dorit</label>
+                            <select id="serviciu" name="serviciu">
+                                <option value="">Selectează...</option>
+                                <option value="tuns">Tuns</option>
+                                <option value="vopsit">Vopsit</option>
+                                <option value="coafat">Coafat</option>
+                                <option value="permanent">Permanent</option>
+                                <option value="ocazie">Coafat ocazie</option>
+                                <option value="mireasa">Coafat mireasă</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mesaj">Mesaj (opțional)</label>
+                            <textarea id="mesaj" name="mesaj" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Trimite cererea</button>
+                    </form>
+                    <div id="form-status" class="form-status"></div>
                 </div>
                 <div class="map">
                     <iframe src="https://maps.google.com/maps?q=Strada%20C%C4%83prioarei%2C%20Hunedoara&output=embed" loading="lazy" allowfullscreen></iframe>
@@ -212,11 +326,53 @@
         </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer>
-        <p>&copy; <span id="year"></span> Coafor Liliana · Hunedoara · Toate drepturile rezervate.</p>
-        <p style="margin-top: 5px;"><a href="tel:+40766779336">0766 779 336</a> | <a href="https://www.facebook.com/share/1Bedmbskez/?mibextid=wwXIfr" target="_blank">Facebook</a></p>
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>Coafor Liliana</h3>
+                <p>Salon de coafură în Hunedoara, cu servicii profesionale.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Linkuri rapide</h4>
+                <ul>
+                    <li><a href="#despre">Despre</a></li>
+                    <li><a href="#servicii">Servicii</a></li>
+                    <li><a href="#galerie">Galerie</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>📞 <a href="tel:+40766779336">0766 779 336</a></p>
+                <p>📘 <a href="https://www.facebook.com/share/1Bedmbskez/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></p>
+                <p>📍 Strada Căprioarei, Hunedoara</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Coafor Liliana · Toate drepturile rezervate.</p>
+        </div>
     </footer>
 
+    <!-- ===== BUTON PLUTITOR WHATSAPP / MESSENGER ===== -->
+    <a href="https://www.facebook.com/share/1Bedmbskez/?mibextid=wwXIfr" target="_blank" rel="noopener" class="floating-btn facebook" title="Facebook Messenger">
+        💬
+    </a>
+    <a href="tel:+40766779336" class="floating-btn phone" title="Sună acum">
+        📞
+    </a>
+
+    <!-- ===== BUTON BACK TO TOP ===== -->
+    <button id="back-to-top" class="back-to-top" title="Înapoi sus">↑</button>
+
+    <!-- ===== LIGHTBOX ===== -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- JS -->
     <script src="script.js"></script>
 </body>
 </html>
