@@ -103,31 +103,44 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ===== FORMULAR DE PROGRAMARE =====
+// ===== FORMULAR DE PROGRAMARE (trimite pe WhatsApp) =====
 const bookingForm = document.getElementById('booking-form');
 const formStatus = document.getElementById('form-status');
 
 bookingForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Aici poți adăuga cod pentru trimiterea efectivă (ex: fetch către un server)
-    // Pentru moment, simulăm o trimitere reușită
-
     const nume = document.getElementById('nume').value.trim();
     const telefon = document.getElementById('telefon').value.trim();
+    const serviciu = document.getElementById('serviciu').value;
+    const mesaj = document.getElementById('mesaj').value.trim();
 
     if (!nume || !telefon) {
-        formStatus.textContent = 'Te rugăm să completezi câmpurile obligatorii.';
+        formStatus.textContent = 'Te rugăm să completezi câmpurile obligatorii (nume și telefon).';
         formStatus.className = 'form-status error';
         return;
     }
 
-    // Simulează succes
-    formStatus.textContent = 'Cererea a fost trimisă cu succes! Te vom contacta în curând.';
+    // Construim mesajul pentru WhatsApp
+    let text = `Bună ziua! Aș dori să fac o programare.\n\n`;
+    text += `Nume: ${nume}\n`;
+    text += `Telefon: ${telefon}\n`;
+    if (serviciu) text += `Serviciu dorit: ${serviciu}\n`;
+    if (mesaj) text += `Mesaj: ${mesaj}\n`;
+
+    // Numărul de WhatsApp (în format internațional, fără + sau spații)
+    const phoneNumber = '40766779336';
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+    // Deschide WhatsApp într-o fereastră nouă
+    window.open(whatsappUrl, '_blank');
+
+    // Afișăm confirmarea
+    formStatus.textContent = 'Se deschide WhatsApp cu cererea ta...';
     formStatus.className = 'form-status success';
     bookingForm.reset();
 
-    // Ascunde mesajul după 5 secunde
     setTimeout(() => {
         formStatus.style.display = 'none';
     }, 5000);
